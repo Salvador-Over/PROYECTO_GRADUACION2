@@ -1,0 +1,124 @@
+/* Fondo azul claro con nubes */
+.login-page {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Caja central */
+.login-box {
+  background-color: white;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  width: 380px;
+  text-align: center;
+}
+
+/* Icono de arriba */
+.login-icon {
+  background-color: #f1f3f5;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Título y subtítulo */
+.login-box h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.login-box p {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* Inputs con icono */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.input-group .icon {
+  color: #777;
+  margin-right: 8px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 10px 5px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+/* Forgot password */
+.forgot {
+  text-align: right;
+  font-size: 12px;
+  color: #007bff;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* Botón principal */
+.login-box button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.login-box button[type="submit"]:hover {
+  background-color: #333;
+}
+
+/* Social login */
+.social-login span {
+  font-size: 12px;
+  color: #777;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons button {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons .google { background-color: #db4437; color: white; }
+.social-icons .facebook { background-color: #4267B2; color: white; }
+.social-icons .apple { background-color: black; color: white; }
+
+.social-icons button:hover {
+  opacity: 0.8;
+}

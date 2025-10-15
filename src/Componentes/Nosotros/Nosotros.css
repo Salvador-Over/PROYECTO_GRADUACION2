@@ -1,0 +1,50 @@
+/* Contacto */
+
+.contacto-main {
+  background: linear-gradient(to bottom, #004080, #0066cc);
+  color: white;
+  padding: 60px 20px;
+  min-height: 70vh;
+}
+
+.contacto-main h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.contact-card {
+  background-color: white;
+  color: #004080;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.contact-card h3 {
+  margin: 15px 0 10px 0;
+}
+
+.contact-card a {
+  color: #004080;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-card a:hover {
+  color: #FFD700;
+}
