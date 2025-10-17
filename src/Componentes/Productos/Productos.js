@@ -12,7 +12,7 @@ const Productos = () => {
   // Cargar productos
   const fetchProductos = async () => {
     try {
-      const res = await fetch("http://localhost:5000/productos");
+      const res = await fetch("https://pg2-backend-1.onrender.com/productos");
       const data = await res.json();
       setProductos(data);
     } catch (err) {
@@ -35,13 +35,13 @@ const Productos = () => {
     e.preventDefault();
     try {
       if (editingId) {
-        await fetch(`http://localhost:5000/productos/${editingId}`, {
+        await fetch(`https://pg2-backend-1.onrender.com/productos/${editingId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         });
       } else {
-        await fetch("http://localhost:5000/productos", {
+        await fetch("https://pg2-backend-1.onrender.com/productos", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -71,7 +71,7 @@ const Productos = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("¿Eliminar este producto?")) return;
     try {
-      await fetch(`http://localhost:5000/productos/${id}`, { method: "DELETE" });
+      await fetch(`https://pg2-backend-1.onrender.com/productos/${id}`, { method: "DELETE" });
       fetchProductos();
     } catch (err) {
       console.error(err);
@@ -105,7 +105,7 @@ const Productos = () => {
             />
             <h3>{p.nombre}</h3>
             <p>{p.descripcion}</p>
-            <p className="precio">${p.precio}</p>
+            <p className="precio">Q{p.precio}</p>
             <p className="stock">Stock: {p.stock}</p>
             <div className="acciones">
               {user.rol === "admin" ? (

@@ -28,7 +28,7 @@ const Servicios = () => {
       <Header />
 
       <main className="main-section">
-        <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Nuestros Servicios</h1>
+        <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>SERVICIOS QUE OFRECEMOS</h1>
 
         <div className="servicios-container">
           {serviciosData.map((servicio, index) => (

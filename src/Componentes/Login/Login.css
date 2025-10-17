@@ -122,3 +122,22 @@
 .social-icons button:hover {
   opacity: 0.8;
 }
+.toggle-section {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #444;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #1E88E5;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  color: #1565C0;
+}

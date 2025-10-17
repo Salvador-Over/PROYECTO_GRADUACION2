@@ -11,7 +11,7 @@ const OEAProgram = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/productos')
+    fetch('https://pg2-backend-1.onrender.com/productos')
       .then(res => res.json())
       .then(data => setProductos(data.slice(0, 10))) // Límite de productos cargados
       .catch(err => console.error("Error cargando productos:", err));
@@ -84,7 +84,7 @@ const OEAProgram = () => {
                       className="producto-imagen"
                     />
                     <h3>{producto.nombre}</h3>
-                    <p className="precio">${producto.precio}</p>
+                    <p className="precio">Q{producto.precio}</p>
                   </div>
                 </div>
               ))}

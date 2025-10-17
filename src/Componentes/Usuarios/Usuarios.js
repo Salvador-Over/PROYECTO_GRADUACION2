@@ -14,7 +14,7 @@ const Usuarios = () => {
 
   const fetchUsuarios = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/usuarios");
+      const res = await axios.get("https://pg2-backend-1.onrender.com/usuarios");
       setUsuarios(res.data);
     } catch (err) {
       console.error(err);
@@ -27,7 +27,7 @@ const Usuarios = () => {
   const handleCrear = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/register", formData);
+      const res = await axios.post("https://pg2-backend-1.onrender.com/register", formData);
       alert(res.data.message);
       fetchUsuarios();
       setFormData({ nombre: "", email: "", password: "", rol: "usuario" });
@@ -39,7 +39,7 @@ const Usuarios = () => {
 
   const handleEliminar = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/usuarios/${id}`);
+      await axios.delete(`https://pg2-backend-1.onrender.com/usuarios/${id}`);
       alert("Usuario eliminado");
       fetchUsuarios();
     } catch (err) {

@@ -20,7 +20,7 @@ const RegistrarServicio = () => {
 
   // 🔹 Cargar equipos
   useEffect(() => {
-    fetch("http://localhost:5000/equipos")
+    fetch("https://pg2-backend-1.onrender.com/equipos")
       .then((res) => res.json())
       .then((data) => setEquipos(data))
       .catch((err) => console.error("Error cargando equipos:", err));
@@ -28,7 +28,7 @@ const RegistrarServicio = () => {
 
   // 🔹 Cargar servicios
   const cargarServicios = () => {
-    fetch("http://localhost:5000/servicios")
+    fetch("https://pg2-backend-1.onrender.com/servicios")
       .then((res) => res.json())
       .then((data) => setServicios(data))
       .catch((err) => console.error("Error cargando servicios:", err));
@@ -51,7 +51,7 @@ const RegistrarServicio = () => {
   const handleSubmitServicio = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/servicios", {
+      const res = await fetch("https://pg2-backend-1.onrender.com/servicios", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formServicio),
@@ -77,7 +77,7 @@ const RegistrarServicio = () => {
   const handleSubmitEquipo = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/equipos", {
+      const res = await fetch("https://pg2-backend-1.onrender.com/equipos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formEquipo),
@@ -86,7 +86,7 @@ const RegistrarServicio = () => {
         alert("✅ Equipo registrado correctamente");
         setFormEquipo({ nombre: "", tipo: "" });
         // recarga equipos para el select de servicios
-        fetch("http://localhost:5000/equipos")
+        fetch("https://pg2-backend-1.onrender.com/equipos")
           .then((res) => res.json())
           .then((data) => setEquipos(data));
       } else alert("❌ Error al registrar el equipo");
@@ -230,7 +230,7 @@ const RegistrarServicio = () => {
             {servicios.map((s) => (
               <tr key={s.id}>
                 <td>{s.id}</td>
-                <td>{s.equipo_nombre || s.id_equipo}</td>
+<td>{s.equipo}</td>
                 <td>{s.descripcion}</td>
                 <td>{s.fecha_inicio}</td>
                 <td>{s.fecha_fin}</td>

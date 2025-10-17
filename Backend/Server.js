@@ -3,6 +3,24 @@ const cors = require("cors");
 const mysql = require("mysql2/promise");
 
 const app = express();
+
+
+const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
+
+// Claves directas en el código (ya no usamos .env)
+const SECRET_KEY = "clave_super_secreta";
+const BASE_URL = "https://pg2-backend-1.onrender.com";
+
+// Configuración del correo (usa Gmail o Mailtrap)
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "rmartinezo@miumg.edu.gt",       // tu correo real
+    pass: "zloibahxdfqkwalv" // tu contraseña o contraseña de aplicación
+  }
+});
+
 app.use(cors());
 app.use(express.json());
 
@@ -49,6 +67,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
+
 // Login
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -57,14 +76,85 @@ app.post("/login", async (req, res) => {
       "SELECT id, nombre, email, rol FROM usuarios WHERE email = ? AND password = ?",
       [email, password]
     );
+
     if (!rows.length) return res.status(400).json({ message: "Email o contraseña incorrectos" });
 
-    res.json({ message: "Login exitoso", user: rows[0] });
+    const user = rows[0];
+    // Ya no se valida si está verificado
+    res.json({ message: "Login exitoso", user });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Error del servidor" });
   }
 });
+
+
+
+
+
+app.post("/register-user", async (req, res) => {
+  const { nombre, email, password } = req.body;
+  try {
+    const [existing] = await pool.query("SELECT id FROM usuarios WHERE email = ?", [email]);
+    if (existing.length) return res.status(400).json({ message: "Usuario ya existe" });
+
+    // Guardar usuario como no verificado por defecto
+    await pool.query(
+      "INSERT INTO usuarios (nombre, email, password, rol, verificado) VALUES (?,?,?,?,false)",
+      [nombre, email, password, "usuario"]
+    );
+
+    // Generar token
+    const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: "1d" });
+    const verifyUrl = `${BASE_URL}/verify/${token}`;
+
+    // Enviar correo
+    await transporter.sendMail({
+      to: email,
+      subject: "Verifica tu cuenta",
+      html: `
+        <h2>¡Bienvenido ${nombre}!</h2>
+        <p>Haz clic para verificar tu cuenta:</p>
+        <a href="${verifyUrl}" style="padding:10px 15px;background:#1E88E5;color:#fff;text-decoration:none;border-radius:5px;">Verificar cuenta</a>
+      `,
+    });
+
+    res.json({ message: "Usuario creado. Revisa tu correo para verificar tu cuenta." });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error del servidor" });
+  }
+});
+
+
+app.get("/verify/:token", async (req, res) => {
+  const { token } = req.params;
+  try {
+    const decoded = jwt.verify(token, SECRET_KEY);
+    const { email } = decoded;
+
+    await pool.query("UPDATE usuarios SET verificado = true WHERE email = ?", [email]);
+
+    res.send("<h2>Cuenta verificada correctamente 🎉</h2><p>Ya puedes iniciar sesión.</p>");
+  } catch (err) {
+    console.error(err);
+    res.status(400).send("Enlace inválido o expirado.");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ---------------- EQUIPOS ----------------
 
