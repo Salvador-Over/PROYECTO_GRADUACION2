@@ -235,17 +235,7 @@ const RegistrarServicio = () => {
               <td>{new Date(s.fecha_inicio).toLocaleDateString("es-ES")}</td>
 <td>{s.fecha_fin ? new Date(s.fecha_fin).toLocaleDateString("es-ES") : "—"}</td>
 
-                <td>
-  <select
-    value={s.estado}
-    onChange={(e) => actualizarEstado(s.id, e.target.value)}
-  >
-    <option value="Pendiente">Pendiente</option>
-    <option value="En Proceso">En Proceso</option>
-    <option value="Finalizado">Finalizado</option>
-  </select>
-</td>
-
+                <td>{s.estado}</td>
               </tr>
             ))}
           </tbody>
