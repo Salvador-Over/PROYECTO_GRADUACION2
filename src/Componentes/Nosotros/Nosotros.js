@@ -29,25 +29,25 @@ const Contacto = () => {
           <div className="contact-card">
             <FaWhatsapp size={40} color="#25D366" />
             <h3>WhatsApp</h3>
-            <p><a href="https://wa.me/50212345678" target="_blank" rel="noopener noreferrer">+502 1234 5678</a></p>
+            <p><a href="https://wa.me/50250115060" target="_blank" rel="noopener noreferrer">+502 5011 5060</a></p>
           </div>
 
           <div className="contact-card">
             <FaFacebook size={40} color="#4267B2" />
             <h3>Facebook</h3>
-            <p><a href="https://facebook.com/SupportIT" target="_blank" rel="noopener noreferrer">/SupportIT</a></p>
+            <p><a href="https://www.facebook.com/share/1F9vBpDwC7/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer">/SupportIT</a></p>
           </div>
 
           <div className="contact-card">
             <FaEnvelope size={40} color="#D44638" />
             <h3>Email</h3>
-            <p><a href="mailto:soporte@supportit.com">soporte@supportit.com</a></p>
+            <p><a href="mailto:supportitgt@gmail.com">supportitgt@gmail.com</a></p>
           </div>
 
           <div className="contact-card">
             <FaPhone size={40} color="#004080" />
             <h3>Teléfono</h3>
-            <p><a href="tel:+50212345678">+502 1234 5678</a></p>
+            <p><a href="tel:+50212345678">+502 5011 5060</a></p>
           </div>
         </div>
 

@@ -115,7 +115,7 @@ const Productos = () => {
                 </>
               ) : (
                 <a
-                  href={`https://wa.me/50212345678?text=Hola,%20quiero%20información%20sobre%20el%20producto:%20${encodeURIComponent(p.nombre)}`}
+                  href={`https://wa.me/50250115060?text=Hola,%20quiero%20información%20sobre%20el%20producto:%20${encodeURIComponent(p.nombre)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
