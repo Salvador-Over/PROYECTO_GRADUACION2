@@ -232,9 +232,20 @@ const RegistrarServicio = () => {
                 <td>{s.id}</td>
 <td>{s.equipo}</td>
                 <td>{s.descripcion}</td>
-                <td>{s.fecha_inicio}</td>
-                <td>{s.fecha_fin}</td>
-                <td>{s.estado}</td>
+              <td>{new Date(s.fecha_inicio).toLocaleDateString("es-ES")}</td>
+<td>{s.fecha_fin ? new Date(s.fecha_fin).toLocaleDateString("es-ES") : "—"}</td>
+
+                <td>
+  <select
+    value={s.estado}
+    onChange={(e) => actualizarEstado(s.id, e.target.value)}
+  >
+    <option value="Pendiente">Pendiente</option>
+    <option value="En Proceso">En Proceso</option>
+    <option value="Finalizado">Finalizado</option>
+  </select>
+</td>
+
               </tr>
             ))}
           </tbody>
